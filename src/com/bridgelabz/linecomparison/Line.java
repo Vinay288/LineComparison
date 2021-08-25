@@ -29,4 +29,14 @@ public class Line {
 		System.out.println("given lines are not equal");
 	}
 
+	public void comapreLengthOfLines(Line line) {
+		int compare = this.length.compareTo(line.length);
+		if (compare > 0)
+			System.out.println(this.name + " is greater then " + line.name);
+		else if (compare < 0)
+			System.out.println(line.name + " is greater then " + this.name);
+		else
+			System.out.println("both lines are equal");
+	}
+
 }
