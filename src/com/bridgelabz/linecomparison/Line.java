@@ -21,4 +21,12 @@ public class Line {
 		return (float) Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
 	}
 
+	public void equalityOfLines(Line line) {
+		if (this.length.equals(line.length)) {
+			System.out.println("given lines are equal");
+			return;
+		}
+		System.out.println("given lines are not equal");
+	}
+
 }
