@@ -1,42 +1,21 @@
 package com.bridgelabz.linecomparison;
 
-public class Line {
-	Float x1, x2, y1, y2, length;
-	private String name = "line";
-
-	Line(float x1, float x2, float y1, float y2) {
-		this.x1 = x1;
-		this.x2 = x2;
-		this.y1 = y1;
-		this.y2 = y2;
-		length = lengthOfLine();
+public class Line implements LineIf{
+	private Float length;
+	private Point point1,point2;
+	
+	public void addPoints(Float startX,Float startY,Float endX,Float endY) {
+		Point point1=new Point(startX,startY);
+		Point point2=new Point(endX,endY);
+		setLength(point1,point2);
 	}
-
-	Line(float x1, float x2, float y1, float y2, String name) {
-		this(x1, x2, y1, y2);
-		this.name = name;
+	public float lengthOfLine(Point point1,Point point2) {
+		return (float) Math.sqrt(Math.pow((point1.getxCoordinate() - point2.getxCoordinate()), 2) + Math.pow((point2.getyCoordinate() - point1.getyCoordinate()), 2));
 	}
-
-	public float lengthOfLine() {
-		return (float) Math.sqrt(Math.pow((x2 - x1), 2) + Math.pow((y2 - y1), 2));
+	public void setLength(Point point1,Point point2) {
+		this.length=lengthOfLine(point1,point2);
 	}
-
-	public void equalityOfLines(Line line) {
-		if (this.length.equals(line.length)) {
-			System.out.println("given lines are equal");
-			return;
-		}
-		System.out.println("given lines are not equal");
-	}
-
-	public void comapreLengthOfLines(Line line) {
-		int compare = this.length.compareTo(line.length);
-		if (compare > 0)
-			System.out.println(this.name + " is greater then " + line.name);
-		else if (compare < 0)
-			System.out.println(line.name + " is greater then " + this.name);
-		else
-			System.out.println("both lines are equal");
-	}
-
+	public Float getLength() {
+		return length;
+	}	
 }
